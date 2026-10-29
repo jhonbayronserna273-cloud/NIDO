@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b32">
+  <meta name="description" content="NIDO: organiza tus metas de ahorro.">
+  <title>NIDO — Tus metas, a tu ritmo</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">n</span><span>NIDO</span></a>
+      <p class="side-label">TU ESPACIO</p>
+      <button class="nav-item active"><span>▦</span> Resumen</button>
+      <button class="nav-item" id="goGoals"><span>◎</span> Mis metas</button>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span class="tip-icon">✦</span><strong>Un paso a la vez.</strong><p>Los grandes planes empiezan con pequeños ahorros.</p></div>
+        <span class="version">NIDO · VERSIÓN 0.1</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">TU TRANQUILIDAD FINANCIERA</span><h1>Tu espacio para crecer.</h1></div>
+        <div class="avatar">N</div>
+      </header>
+
+      <section class="welcome">
+        <div><span class="eyebrow light">HOLA, BIENVENIDO A NIDO</span><h2>Todo gran sueño<br>merece un lugar.</h2><p>Organiza tus ahorros, sigue tu progreso y acércate a eso que tanto quieres.</p></div>
+        <div class="welcome-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="sparkle">✦</div></div>
+      </section>
+
+      <section class="section-heading" id="goalsSection"><div><span class="eyebrow">TU PROGRESO</span><h2>Mis metas</h2></div><button class="primary-btn" id="openModal"><span>＋</span> Crear meta</button></section>
+
+      <section class="summary-grid">
+        <article class="summary-card"><span class="summary-icon">↗</span><div class="summary-label">TOTAL AHORRADO</div><strong id="totalSaved">$0</strong><small>En todas tus metas</small></article>
+        <article class="summary-card"><span class="summary-icon">◎</span><div class="summary-label">METAS ACTIVAS</div><strong id="goalCount">0</strong><small>Pequeños pasos, grandes logros</small></article>
+        <article class="summary-card"><span class="summary-icon">✧</span><div class="summary-label">OBJETIVO TOTAL</div><strong id="totalTarget">$0</strong><small>Todo lo que quieres alcanzar</small></article>
+      </section>
+
+      <section id="goalsList" class="goals-grid"></section>
+      <div class="empty-state" id="emptyState"><div class="empty-illustration">＋</div><h3>Tu primera meta empieza aquí</h3><p>Crea un propósito y dale un lugar especial a tus ahorros.</p><button class="primary-btn" id="emptyCreate">Crear mi primera meta</button></div>
+      <footer>Hecho para tus sueños. <span>NIDO © 2026</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <form class="modal" id="goalForm">
+      <button type="button" class="close-btn" id="closeModal" aria-label="Cerrar">×</button>
+      <span class="eyebrow">UN NUEVO COMIENZO</span><h2 id="modalTitle">Crear una meta</h2><p class="modal-intro">¿Qué quieres lograr? Vamos paso a paso.</p>
+      <label>Nombre de tu meta<input id="goalName" maxlength="42" placeholder="Ej. Viaje a Cartagena" required></label>
+      <label>¿Cuánto necesitas? <span class="input-hint">En pesos colombianos</span><input id="goalTarget" type="number" min="1" step="1" placeholder="2400000" required></label>
+      <label>¿Cuánto tienes ahorrado? <span class="input-hint">Puedes empezar en cero</span><input id="goalSaved" type="number" min="0" step="1" value="0" required></label>
+
+      <label class="photo-upload-label">Foto de tu objetivo <span class="input-hint">Opcional · JPG, PNG o WEBP</span>
+        <input id="goalPhoto" type="file" accept="image/*">
+      </label>
+      <div class="photo-preview-wrap" id="photoPreviewWrap" hidden>
+        <img id="photoPreview" alt="Vista previa de la foto">
+        <span>Así se verá tu meta</span>
+      </div>
+      <label class="remove-photo-option" id="removePhotoWrap" hidden>
+        <input id="removePhoto" type="checkbox"> Quitar la foto actual
+      </label>
+      <button class="primary-btn full-btn" type="submit">Guardar mi meta <span>→</span></button>
+    </form>
+  </div>
+
+  <div class="modal-backdrop" id="depositBackdrop">
+    <form class="modal small-modal" id="depositForm">
+      <button type="button" class="close-btn" id="closeDeposit" aria-label="Cerrar">×</button>
+      <span class="eyebrow">CADA PESO CUENTA</span><h2>Registrar ahorro</h2><p class="modal-intro" id="depositGoalName"></p>
+      <label>¿Cuánto vas a sumar?<input id="depositAmount" type="number" min="1" step="1" placeholder="50000" required></label>
+      <button class="primary-btn full-btn" type="submit">Sumar a mi meta <span>→</span></button>
+    </form>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

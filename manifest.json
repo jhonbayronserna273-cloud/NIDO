@@ -1,0 +1,9 @@
+{
+  "name": "NIDO - Tus metas de ahorro",
+  "short_name": "NIDO",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f8f3",
+  "theme_color": "#123b32",
+  "description": "Organiza tus metas de ahorro."
+}
